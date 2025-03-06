@@ -68,17 +68,11 @@ int	render_next_frame(t_vars *vars)
 	return (0);
 }
 
-void	mlx_img_init(t_vars *vars)
+t_data	*mlx_img_init(void)
 {
 	t_data	img;
 
-	img.img = mlx_new_image(vars->mlx, 960, 540);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	img.x = 480;
-	img.y = 270;
-	my_mlx_pixel_put(&img, img.x, img.y, 0x00FF0000);
-	vars->img = &img;
+	return (&img);
 }
 
 int	main(void)
@@ -88,9 +82,16 @@ int	main(void)
 
 	vars.mlx = mlx_init();
 	vars.mlx_win = mlx_new_window(vars.mlx, 960, 540, "fract-ol");
-	mlx_img_init(&vars);
+	vars.img = mlx_img_init();
+	img.img = mlx_new_image(vars.mlx, 960, 540);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	img.x = 480;
+	img.y = 270;
+	my_mlx_pixel_put(&img, img.x, img.y, 0x00FF0000);
+	vars.img = &img;
 	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.img->img, 0, 0);
 	// mlx_loop_hook(vars.mlx, render_next_frame, &vars);
-	mlx_hook(vars.mlx_win, 2, 1L << 0, motion, &vars);
+	mlx_hook(vars.mlx_win, 2, 1L << 0, &motion, &vars);
 	mlx_loop(vars.mlx);
 }
