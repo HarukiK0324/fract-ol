@@ -5,9 +5,8 @@
 typedef struct s_data
 {
 	void	*img;
-	t_vars 	*vars;
-	int 	x;
-	int 	y;
+	int		x;
+	int		y;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
@@ -18,7 +17,7 @@ typedef struct s_vars
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data *img;
+	t_data	*img;
 }			t_vars;
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
@@ -34,48 +33,64 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 // }
 
-int motion(int keycoded,t_vars *vars)
+int	motion(int keycoded, t_vars *vars)
 {
-	if(keycoded == 119) // w pressed
-		vars->img->y += 1;
-	else if(keycoded == 115) // s pressed
-		vars->img->y -= 1;
-	else if(keycoded == 97) // a pressed
-		vars->img->x -= 1;
-	else if(keycoded == 100) // d pressed
-		vars->img->x += 1;
+	if (keycoded == 119) // w pressed
+		vars->img->y -= 5;
+	if (keycoded == 115) // s pressed
+		vars->img->y += 5;
+	if (keycoded == 97) // a pressed
+		vars->img->x -= 5;
+	if (keycoded == 100) // d pressed
+		vars->img->x += 5;
 	vars->img->x = vars->img->x % 960;
 	vars->img->y = vars->img->y % 540;
-	t_data *img = mlx_new_image(vars->mlx, 960, 540);
-	img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length,
-			&img->endian);
 	// create_shape(img);
-	my_mlx_pixel_put(img, vars->img->x, vars->img->y, 0x00FF0000);
-	mlx_put_image_to_window(vars->mlx, vars->mlx_win, img->img, 0, 0);
-	vars->img = img;
-	return 0;
+	my_mlx_pixel_put(vars->img, vars->img->x, vars->img->y, 0x00FF0000);
+	mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img->img, 0, 0);
+	return (0);
 }
 
-int render_next_frame(t_vars *vars)
+int	win_close(int keycoded, t_vars *vars)
 {
-	mlx_hook(vars->mlx_win, 2, 1L << 0, motion, vars);
-	return 0;
+	// printf("%d\n", keycoded);
+	// if (keycoded == 98)
+	mlx_destroy_window(vars->mlx, vars->mlx_win);
+	return (0);
+}
+
+int	render_next_frame(t_vars *vars)
+{
+	printf("%s\n", "called");
+	mlx_destroy_window(vars->mlx, vars->mlx_win);
+	// mlx_hook(vars->mlx_win, 2, 1L << 0, motion, vars);
+	mlx_hook(vars->mlx_win, 2, 1L << 0, win_close, vars);
+	return (0);
+}
+
+void	mlx_img_init(t_vars *vars)
+{
+	t_data	img;
+
+	img.img = mlx_new_image(vars->mlx, 960, 540);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
+			&img.endian);
+	img.x = 480;
+	img.y = 270;
+	my_mlx_pixel_put(&img, img.x, img.y, 0x00FF0000);
+	vars->img = &img;
 }
 
 int	main(void)
 {
-	t_vars vars;
-	t_data img;
+	t_vars	vars;
+	t_data	img;
 
 	vars.mlx = mlx_init();
-	vars.mlx_win = mlx_new_window(vars.mlx, 960, 540, "Hello world!");
-	img.img = mlx_new_image(vars.mlx, 960, 540);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	img.x = 0;
-	img.y = 0;
-	vars.img = &img;
-	mlx_put_image_to_window(vars.mlx, vars.mlx_win, img.img, 0, 0);
-	mlx_loop_hook(vars.mlx, render_next_frame, &vars);
+	vars.mlx_win = mlx_new_window(vars.mlx, 960, 540, "fract-ol");
+	mlx_img_init(&vars);
+	mlx_put_image_to_window(vars.mlx, vars.mlx_win, vars.img->img, 0, 0);
+	// mlx_loop_hook(vars.mlx, render_next_frame, &vars);
+	mlx_hook(vars.mlx_win, 2, 1L << 0, motion, &vars);
 	mlx_loop(vars.mlx);
 }
