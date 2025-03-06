@@ -70,15 +70,16 @@ int	render_next_frame(t_vars *vars)
 
 void	mlx_img_init(t_vars *vars)
 {
-	t_data	img;
-
-	img.img = mlx_new_image(vars->mlx, 960, 540);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-			&img.endian);
-	img.x = 480;
-	img.y = 270;
-	my_mlx_pixel_put(&img, img.x, img.y, 0x00FF0000);
-	vars->img = &img;
+	vars->img = malloc(sizeof(t_data));  // Allocate memory
+	if (!vars->img)
+		return;
+	
+	vars->img->img = mlx_new_image(vars->mlx, 960, 540);
+	vars->img->addr = mlx_get_data_addr(vars->img->img, &vars->img->bits_per_pixel, 
+			&vars->img->line_length, &vars->img->endian);
+	vars->img->x = 480;
+	vars->img->y = 270;
+	my_mlx_pixel_put(vars->img, vars->img->x, vars->img->y, 0x00FF0000);
 }
 
 int	main(void)
