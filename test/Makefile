@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Imlx
 
-NAME = fract-ol
+NAME = fractol
 LIBMLX = minilibx_opengl/libmlx.a
 SRC_DIR = .
 OBJ_DIR = obj

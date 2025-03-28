@@ -1,7 +1,7 @@
 CC = cc
-CFLAGS = -I. 
+CFLAGS = -I.
 
-NAME = fract-ol.a
+NAME = fractol
 LIBMLX = minilibx-linux/libmlx.a
 SRC_DIR = .
 OBJ_DIR = obj
