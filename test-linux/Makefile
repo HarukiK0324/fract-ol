@@ -10,7 +10,7 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBMLX) -lXext -lX11 -lm -lz
+	$(CC) $(CFLAGS) $(OBJ) $(LIBMLX) -lXext -lX11 -lm -lz -o $(NAME)
 
 $(LIBMLX):
 	$(MAKE) -C ./minilibx-linux
