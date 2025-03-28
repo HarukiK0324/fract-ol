@@ -6,14 +6,14 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/28 15:22:37 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/28 15:27:47 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACT_OL_H
 # define FRACT_OL_H
 
-#include "minilibx_opengl/mlx.h"
+#include "minilibx-linux/mlx.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
