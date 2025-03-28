@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:04 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/21 17:43:18 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/27 22:10:48 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,13 @@ int	ft_print_string(char *c)
 	return ((int)write(1, c, ft_strlen(c)));
 }
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	while (*s1 != '\0' && (*s1 == *s2) && n > 0)
+	while (*s1 != '\0' && (*s1 == *s2))
 	{
 		s1++;
 		s2++;
-		n--;
 	}
-	if (n == 0)
-		return (0);
 	return ((unsigned char)*s1 - (unsigned char)*s2);
 }
 
