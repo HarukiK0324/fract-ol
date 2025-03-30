@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/03/28 15:22:37 by haruki           ###   ########.fr       */
+/*   Updated: 2025/03/30 13:59:28 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ enum {
     KEY_RIGHT = 124,
     win_x = 760,
     win_y = 540,
-    MAX_ITR = 100
+    MAX_ITR = 200
 };
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n);

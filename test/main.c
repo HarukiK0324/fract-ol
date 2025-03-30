@@ -106,7 +106,10 @@ void calculate_fractal(t_vars *vars)
 {
     int x, y;
     mlx_destroy_image(vars->mlx, vars->img->img);
-    mlx_img_init(vars);
+    vars->img->img = mlx_new_image(vars->mlx, win_x, win_y);
+    vars->img->addr = mlx_get_data_addr(vars->img->img,
+            &vars->img->bits_per_pixel, &vars->img->line_length,
+            &vars->img->endian);
 
     for (x = 0; x < win_x; x++)
     {
