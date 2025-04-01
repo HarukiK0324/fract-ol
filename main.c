@@ -22,7 +22,7 @@ void	mlx_img_init(t_vars *vars)
 	vars->img->zoom = 1.0;
 	vars->img->center_x = 0;
 	vars->img->center_y = 0;
-	vars->img->color = 0x0000FF; // Default color
+	vars->img->color = COLOR_BLUE; // Default color
 }
 
 void	draw_fractal(t_vars *vars, char *fractal)

@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/04/02 04:24:55 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/02 04:26:37 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,6 @@ typedef struct s_vars
 
 enum {
     COLOR_BLUE = 0x0000FF,
-    COLOR_RED = 0xFF0000,
-    COLOR_GREEN = 0x00FF00,
-    COLOR_PURPLE = 0xFF00FF,
-    COLOR_YELLOW = 0xFFFF00,
-    COLOR_CYAN = 0x00FFFF,
-    COLOR_WHITE = 0xFFFFFF,
     KEY_J = 38,
     KEY_K = 40,
     KEY_L = 37,
