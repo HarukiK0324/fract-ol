@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 21:25:08 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/03/30 13:55:49 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/02 04:07:15 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int zoom(int keycode, int x, int y, t_vars *vars)
 
     mouse_re = 1.5 * (x - win_x / 2) / (0.5 * vars->img->zoom * win_x) + vars->img->center_x;
     mouse_im = (y - win_y / 2) / (0.5 * vars->img->zoom * win_y) + vars->img->center_y;
-    if (keycode == ZOOM_IN)
+    if (keycode == ZOOM_IN && vars->img->zoom > 1e14)
+        return (0);
+    else if (keycode == ZOOM_IN)
         zoom_factor = 1.1;
     else if (keycode == ZOOM_OUT)
         zoom_factor = 0.9;
@@ -36,13 +38,17 @@ int zoom(int keycode, int x, int y, t_vars *vars)
 int key_event(int keycode, t_vars *vars)
 {
     if(keycode == KEY_ESC)
-        my_mlx_destroy_window(vars);
+        return(my_mlx_destroy_window(vars),0);
     else if(keycode >= KEY_LEFT && keycode <= KEY_UP)
-    {
         motion(keycode, vars);
-        draw_fractal(vars, vars->fractal_type);
-        mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img->img, 0, 0);
-    }
+    else if(keycode == KEY_L)
+        vars->img->color = (vars->img->color + 0x000010) % 0xFFFFFF;
+    else if(keycode == KEY_J)
+        vars->img->color = (vars->img->color + 0x001000) % 0xFFFFFF;
+    else if(keycode == KEY_K)
+        vars->img->color = (vars->img->color + 0x100000) % 0xFFFFFF;
+    draw_fractal(vars, vars->fractal_type);
+    mlx_put_image_to_window(vars->mlx, vars->mlx_win, vars->img->img, 0, 0);
     return (0);
 }
 
