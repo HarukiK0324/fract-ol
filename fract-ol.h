@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/04/02 04:26:37 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/02 04:40:22 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ enum {
     KEY_RIGHT = 124,
     win_x = 760,
     win_y = 540,
-    MAX_ITR = 200
+    MAX_ITR = 500
 };
 
 void	draw_mandelbrot(t_data *img, int x, int y);
