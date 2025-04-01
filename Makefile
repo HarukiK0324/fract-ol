@@ -1,8 +1,8 @@
 CC = cc
-CFLAGS = -I. 
+CFLAGS = -Wall -Wextra -Werror -Imlx
 
-NAME = fract-ol.a
-LIBMLX = minilibx-linux/libmlx.a
+NAME = fractol
+LIBMLX = minilibx_opengl/libmlx.a
 SRC_DIR = .
 OBJ_DIR = obj
 
@@ -10,10 +10,10 @@ SRC = $(wildcard *.c)
 OBJ = $(SRC:.c=.o)
 
 $(NAME): $(LIBMLX) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIBMLX) -lXext -lX11 -lm -lz
+	$(CC) $(CFLAGS) $(OBJ) $(LIBMLX) -framework OpenGL -framework AppKit -o $(NAME)
 
 $(LIBMLX):
-	$(MAKE) -C ./minilibx-linux
+	$(MAKE) -C ./minilibx_opengl
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
