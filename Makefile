@@ -1,5 +1,5 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx
+CFLAGS = -Wall -Wextra -Werror -Imlx -O2
 
 NAME = fractol
 LIBMLX = minilibx_opengl/libmlx.a
