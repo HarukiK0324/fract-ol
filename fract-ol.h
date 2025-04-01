@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/04/02 03:58:57 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/02 04:24:55 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,14 +75,21 @@ enum {
     MAX_ITR = 200
 };
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
-int ft_strlen(char *s);
+void	draw_mandelbrot(t_data *img, int x, int y);
+void	draw_julia(t_data *img, int x, int y);
+void	draw_burning_ship(t_data *img, int x, int y);
+void	calculate_fractal(t_vars *vars);
 int zoom(int keycode, int x, int y, t_vars *vars);
 int key_event(int keycode, t_vars *vars);
 int my_mlx_destroy_window(t_vars *vars);
 void motion(int keycode, t_vars *vars);
-void draw_fractal(t_vars *vars, char *fractal);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	mlx_img_init(t_vars *vars);
+void	draw_fractal(t_vars *vars, char *fractal);
 int	ft_print_string(char *c);
 int	ft_strcmp(const char *s1, const char *s2);
+int ft_strlen(char *s);
+int	get_color(int iterations, int max_iterations, u_int32_t base_color);
+
 
 #endif 
