@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/27 21:25:08 by hkasamat          #+#    #+#             */
-/*   Updated: 2025/04/03 15:18:56 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:23:37 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,8 @@ int	my_mlx_destroy_window(t_vars *vars)
 	mlx_destroy_window(vars->mlx, vars->mlx_win);
 	free(vars->img);
 	free(vars->mlx);
-	free(vars->fractal_type);
-	free(vars);
+	// free(vars->fractal_type);
+	// free(vars);
 	exit(EXIT_SUCCESS);
 }
 
