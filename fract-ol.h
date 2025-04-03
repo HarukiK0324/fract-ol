@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fract-ol.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hkasamat <hkasamat@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:42 by haruki            #+#    #+#             */
-/*   Updated: 2025/04/02 16:02:38 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/03 12:11:24 by hkasamat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <sys/types.h>
 # include <unistd.h>
 
 typedef struct s_data
@@ -51,19 +52,39 @@ typedef struct s_vars
 	char		*fractal_type;
 }				t_vars;
 
+// macOS
+// enum
+// {
+// 	COLOR_BLUE = 0x0000FF,
+// 	KEY_J = 38,
+// 	KEY_K = 40,
+// 	KEY_L = 37,
+// 	KEY_ESC = 53,
+// 	ZOOM_IN = 4,
+// 	ZOOM_OUT = 5,
+// 	KEY_UP = 126,
+// 	KEY_DOWN = 125,
+// 	KEY_LEFT = 123,
+// 	KEY_RIGHT = 124,
+// 	win_x = 760,
+// 	win_y = 540,
+// 	MAX_ITR = 500
+// };
+
+// linux
 enum
 {
 	COLOR_BLUE = 0x0000FF,
-	KEY_J = 38,
-	KEY_K = 40,
-	KEY_L = 37,
-	KEY_ESC = 53,
+	KEY_J = 106,
+	KEY_K = 107,
+	KEY_L = 108,
+	KEY_ESC = 65307,
 	ZOOM_IN = 4,
 	ZOOM_OUT = 5,
-	KEY_UP = 126,
-	KEY_DOWN = 125,
-	KEY_LEFT = 123,
-	KEY_RIGHT = 124,
+	KEY_UP = 65362,
+	KEY_DOWN = 65364,
+	KEY_LEFT = 65361,
+	KEY_RIGHT = 65363,
 	win_x = 760,
 	win_y = 540,
 	MAX_ITR = 500
