@@ -6,7 +6,7 @@
 /*   By: haruki <haruki@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 14:40:04 by haruki            #+#    #+#             */
-/*   Updated: 2025/04/02 04:25:06 by haruki           ###   ########.fr       */
+/*   Updated: 2025/04/04 17:56:27 by haruki           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,17 @@ int	ft_strlen(char *s)
 
 int	get_color(int iterations, int max_iterations, u_int32_t base_color)
 {
-	double	t;
-	int		r;
-	int		g;
-	int		b;
+	int	r;
+	int	g;
+	int	b;
 
 	if (iterations == max_iterations)
 		return (0);
-	t = (double)iterations / max_iterations;
 	r = (base_color >> 16) & 0xFF;
 	g = (base_color >> 8) & 0xFF;
 	b = base_color & 0xFF;
-	r = (int)(r * t);
-	g = (int)(g * t);
-	b = (int)(b * t);
-	return ((r << 16) | (g << 8) | b);
+	r = (int)(sin(0.1 * iterations + 0) * 127 + 128);
+	g = (int)(sin(0.1 * iterations + 2) * 127 + 128);
+	b = (int)(sin(0.1 * iterations + 4) * 127 + 128);
+	return (base_color + ((r << 16) | (g << 8) | b));
 }
